@@ -1,0 +1,5 @@
+2013/12/09:
+    1. add a pin to top option;
+    2. fix a bug when a cell was swipped but the delete button not clicked;
+    3. when you swipe a new cell, the previously swipped cell was reset;
+    4. fix the click event.
