@@ -8,23 +8,20 @@ Drop-in UITableView subclass that supports left-swipe cell deletion like in iOS7
 Just grab YFJLeftSwipeDeleteTableView.(h|m) and drop in your project. You have to specify following methods in the datasource methods as before.
 
 ```
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-	// You can return BOOL value based on which cell you want to enable delete
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    // You can return BOOL value based on which cell you want to enable delete
     return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-        if (editingStyle == UITableViewCellEditingStyleDelete) {
-           // Operation to do when you delete cell.
-    // e.g., delete item from datasource, call [UITableView deleteRowAtIndexPaths:withRowAnimation].
-        
-//        [tableView deselectRowAtIndexPath:indexPath animated:NO];
-//        [tableView reloadData];
-
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Operation to do when you delete cell.
+        // e.g., delete item from datasource, call [UITableView deleteRowAtIndexPaths:withRowAnimation].
+        // [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    }else if (editingStyle == UITableViewCellEditingStyleInsert) {
         //if you want to pin a cell to top, write your code here.
         //Don't forget to reload the table after you change your datasource.
         [tableView reloadData];
