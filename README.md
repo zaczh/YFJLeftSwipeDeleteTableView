@@ -10,18 +10,30 @@ Just grab YFJLeftSwipeDeleteTableView.(h|m) and drop in your project. You have t
 ```
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 	// You can return BOOL value based on which cell you want to enable delete
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Operation to do when you delete cell.
+
+        if (editingStyle == UITableViewCellEditingStyleDelete) {
+           // Operation to do when you delete cell.
     // e.g., delete item from datasource, call [UITableView deleteRowAtIndexPaths:withRowAnimation].
+        
+//        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//        [tableView reloadData];
+
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        //if you want to pin a cell to top, write your code here.
+        //Don't forget to reload the table after you change your datasource.
+        [tableView reloadData];
+    }
 }
 
 ```
 
-![Screenshot](https://s3.amazonaws.com/yfj_screenshots/YFJLeftSwipeDeleteTableView/Screenshot1.png "Screenshot")
+![Screenshot](https://www.amazon.com/clouddrive/share?s=vcskk-igQfgo7NMW6mYmEg "Screenshot")
 
 It will give you left-swipe delete button like in iOS7 both for iOS6&7.
 
